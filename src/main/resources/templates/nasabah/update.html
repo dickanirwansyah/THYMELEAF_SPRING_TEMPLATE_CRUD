@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="${title}"></title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container" th:fragment="content">
+            <div class="container-fluid">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="page-header">
+                        <h3>Update Nasabah</h3>
+                    </div>
+                    <form th:action="@{/data/NasabahUpdate}" method="POST" th:object="${nasabahs}" class="form-horizontal" id="myForm">
+                        <input type="hidden" name="idnasabah" th:field="*{idnasabah}"/>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Nama :</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" name="nama" th:field="*{nama}" /> 
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Alamat :</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" name="alamat" th:field="*{alamat}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Telepon :</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" name="notelp" th:field="*{notelp}"/>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-lg-offset-2">
+                            <button type="submit" class="btn btn-success">
+                                update
+                            </button>
+                            <a th:href="@{/data/Nasabah}" class="btn btn-default">
+                                kembali
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

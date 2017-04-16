@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="${title}"></title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+    </head>
+    <body>
+        <div class="container" th:fragment="content">
+            <div class="container-fluid">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="page-header">
+                        <h3>Data Nasabah</h3>
+                    </div>
+                    <a th:href="@{/data/NasabahInsert}" class="btn btn-success">
+                        Add Nasabah
+                    </a>
+                    <div class="page-header">
+                        <table class="table table-bordered table-striped" id="myTabel">
+                            <thead>
+                                <tr>
+                                    <th>no</th>
+                                    <th>nama</th>
+                                    <th>alamat</th>
+                                    <th>telepon</th>
+                                    <th>opsi</th>
+                                </tr>
+                            <tbody>
+                                <tr th:each="nas : ${listnasabah}">
+                                    <td th:text="${nas.idnasabah}"></td>
+                                    <td th:text="${nas.nama}"></td>
+                                    <td th:text="${nas.alamat}"></td>
+                                    <td th:text="${nas.notelp}"></td>
+                                    <td>
+                                        <a th:href="@{/data/NasabahUpdate(idnasabah=${nas.idnasabah})}" class="btn btn-success">
+                                           edit
+                                        </a>
+                                        <a th:href="@{/data/NasabahDelete(idnasabah=${nas.idnasabah})}" 
+                                           class="btn btn-default" onclick="return confirm('sure?')">
+                                            hapus
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
